@@ -64,7 +64,7 @@ variables:
   second_light: !input "second_light"
   third_light: !input "third_light"
   forth_light: !input "forth_light"
-  current_light: !input "current_light"
+  current_light: current_light
   dim_scale: !input "dim_scale"
   lights:
     first_light: !input "first_light"
@@ -101,7 +101,7 @@ action:
                       sequence:
                         - service: input_text.set_value
                           target:
-                            entity_id: !input "current_light"
+                            entity_id: current_light
                           data:
                             value: first_light
                     - choose:
@@ -121,7 +121,7 @@ action:
               sequence:
                 - service: input_text.set_value
                   target:
-                    entity_id: !input "current_light"
+                    entity_id: current_light
                   data:
                     value: second_light
             - choose:
@@ -141,7 +141,7 @@ action:
               sequence:
                 - service: input_text.set_value
                   target:
-                    entity_id: !input "current_light"
+                    entity_id: current_light
                   data:
                     value: third_light
             - choose:
@@ -162,7 +162,7 @@ action:
               sequence:
                 - service: input_text.set_value
                   target:
-                    entity_id: !input "current_light"
+                    entity_id: current_light
                   data:
                     value: forth_light
             - choose:
