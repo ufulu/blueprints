@@ -92,7 +92,7 @@ action:
           - choose:
             - conditions:
               - condition: state
-                entity_id: !input "first_light"
+                target: !input "first_light"
                 state: 'off'
               sequence:
               - service: homeassistant.toggle
@@ -113,7 +113,7 @@ action:
           - choose:
             - conditions:
               - condition: state
-                entity_id: !input "second_light"
+                target: !input "second_light"
                 state: 'off'
               sequence:
               - service: homeassistant.toggle
@@ -134,7 +134,7 @@ action:
           - choose:
             - conditions:
               - condition: state
-                entity_id: !input "third_light"
+                target: !input "third_light"
                 state: 'off'
               sequence:
               - service: homeassistant.toggle
@@ -155,7 +155,7 @@ action:
           - choose:
             - conditions:
               - condition: state
-                entity_id: !input "forth_light"
+                target: !input "forth_light"
                 state: 'off'
               sequence:
               - service: homeassistant.toggle
