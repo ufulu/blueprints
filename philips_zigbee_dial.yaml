@@ -94,7 +94,7 @@ action:
               sequence:
                 - service: homeassistant.toggle
                   target: !input "first_light"
-          default:
+          - choose:
               - conditions: "{{ current_light != none }}"
                 sequence:
                   - service: input_text.set_value
@@ -112,7 +112,7 @@ action:
               sequence:
                 - service: homeassistant.toggle
                   target: !input "second_light"
-          default:
+          - choose:
             - conditions: "{{ current_light != none }}"
               sequence:
                 - service: input_text.set_value
@@ -130,7 +130,7 @@ action:
               sequence:
                 - service: homeassistant.toggle
                   target: !input "third_light"
-          default:
+          - choose:
             - conditions: "{{ current_light != none }}"
               sequence:
                 - service: input_text.set_value
@@ -148,7 +148,7 @@ action:
               sequence:
                 - service: homeassistant.toggle
                   target: !input "forth_light"
-          default:
+          - choose:
             - conditions: "{{ current_light != none }}"
               sequence:
                 - service: input_text.set_value
