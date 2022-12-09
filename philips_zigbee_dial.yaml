@@ -98,9 +98,9 @@ action:
                     entity_id: !input "current_light"
                   data:
                     value: first_light
-          sequence:
-            - service: homeassistant.toggle
-              target: !input "first_light"     
+            sequence:
+              - service: homeassistant.toggle
+                target: !input "first_light"     
       - conditions:
           - "{{ command == 'recall' }}"
           - "{{ second_light != none }}"
@@ -115,9 +115,9 @@ action:
                     entity_id: !input "current_light"
                   data:
                     value: second_light
-          sequence:
-            - service: homeassistant.toggle
-              target: !input "second_light"     
+            sequence:
+              - service: homeassistant.toggle
+                target: !input "second_light"     
       - conditions:
           - "{{ command == 'recall' }}"
           - "{{ third_light != none }}"
@@ -132,9 +132,9 @@ action:
                     entity_id: !input "current_light"
                   data:
                     value: third_light
-          sequence:
-            - service: homeassistant.toggle
-              target: !input "third_light"     
+            sequence:
+              - service: homeassistant.toggle
+                target: !input "third_light"     
       - conditions:
           - "{{ command == 'recall' }}"
           - "{{ forth_light != none }}"
@@ -149,9 +149,9 @@ action:
                     entity_id: !input "current_light"
                   data:
                     value: forth_light
-          sequence:
-            - service: homeassistant.toggle
-              target: !input "forth_light"     
+            sequence:
+              - service: homeassistant.toggle
+                target: !input "forth_light"     
       - conditions:
           - "{{ command == 'step_with_on_off' }}"
           - "{{ step_mode == 'StepMode.Up' }}"
