@@ -1,5 +1,5 @@
 blueprint:
-  name: Philips Tap Dial Switch Dimmer
+  name: Philips Tap Dial Switch Dim
   description: 'Control lights with a Philips Hue Tap Switch.
     Use the four buttons to control up to four light(s) with an on/off toggle. The dial can be used to dim the most recently used light.
     '
@@ -56,7 +56,7 @@ blueprint:
           min: 0.0
           max: 5.0
           step: 0.01
-  source_url: https://github.com/ufulu/blueprints/blob/main/philips_zigbee_dial.yaml
+  source_url: https://github.com/ufulu/blueprints/edit/main/philips_zigbee_dial.yaml
 mode: restart
 max_exceeded: silent
 variables:
@@ -148,7 +148,7 @@ action:
                 - conditions: "{{ third_light != none }}"
                   sequence:
                     - service: homeassistant.toggle
-                      target: !input "third_light
+                      target: !input "third_light"
   
       - conditions:
           - "{{ command == 'recall' }}"
