@@ -90,100 +90,80 @@ action:
           - "{{ scene == 1 }}"
         sequence:
           - choose:
-              - conditions:
-                  - "{{ command == 'recall' }}"
-                  - "{{ scene == 1 }}"
+            - conditions:
+                - "{{ is_state(first_light, 'on') }}"
+                - "{{ current_light != 'first_light' }}"
+              sequence:
+                - service: input_text.set_value
+                  target:
+                    entity_id: !input "current_light"
+                  data:
+                    value: first_light
+          - choose:
+              - conditions: "{{ current_light != none }}"
                 sequence:
-                  - choose:
-                    - conditions:
-                        - "{{ is_state(first_light, 'on') }}"
-                        - "{{ current_light != 'first_light' }}"
-                      sequence:
-                        - service: input_text.set_value
-                          target:
-                            entity_id: !input "current_light"
-                          data:
-                            value: first_light
-                  - choose:
-                      - conditions: "{{ current_light != none }}"
-                        sequence:
-                          - service: homeassistant.toggle
-                            target: !input "first_light"
+                  - service: homeassistant.toggle
+                    target: !input "first_light"
       - conditions:
           - "{{ command == 'recall' }}"
           - "{{ second_light != none }}"
           - "{{ scene == 0 }}"
         sequence:
           - choose:
-              - conditions:
-                  - "{{ command == 'recall' }}"
-                  - "{{ scene == 1 }}"
+            - conditions:
+                - "{{ is_state(second_light, 'on') }}"
+                - "{{ current_light != 'second_light' }}"
+              sequence:
+                - service: input_text.set_value
+                  target:
+                    entity_id: !input "current_light"
+                  data:
+                    value: second_light
+          - choose:
+              - conditions: "{{ current_light != none }}"
                 sequence:
-                  - choose:
-                    - conditions:
-                        - "{{ is_state(second_light, 'on') }}"
-                        - "{{ current_light != 'second_light' }}"
-                      sequence:
-                        - service: input_text.set_value
-                          target:
-                            entity_id: !input "current_light"
-                          data:
-                            value: second_light
-                    - choose:
-                        - conditions: "{{ current_light != none }}"
-                          sequence:
-                            - service: homeassistant.toggle
-                              target: !input "second_light"
+                  - service: homeassistant.toggle
+                    target: !input "second_light"
       - conditions:
           - "{{ command == 'recall' }}"
           - "{{ third_light != none }}"
           - "{{ scene == 5 }}"
         sequence:
           - choose:
-              - conditions:
-                  - "{{ command == 'recall' }}"
-                  - "{{ scene == 1 }}"
+            - conditions:
+                - "{{ is_state(third_light, 'on') }}"
+                - "{{ current_light != 'third_light' }}"
+              sequence:
+                - service: input_text.set_value
+                  target:
+                    entity_id: !input "current_light"
+                  data:
+                    value: third_light
+          - choose:
+              - conditions: "{{ current_light != none }}"
                 sequence:
-                  - choose:
-                    - conditions:
-                        - "{{ is_state(third_light, 'on') }}"
-                        - "{{ current_light != 'third_light' }}"
-                      sequence:
-                        - service: input_text.set_value
-                          target:
-                            entity_id: !input "current_light"
-                          data:
-                            value: third_light
-                  - choose:
-                      - conditions: "{{ current_light != none }}"
-                        sequence:
-                          - service: homeassistant.toggle
-                            target: !input "third_light"
+                  - service: homeassistant.toggle
+                    target: !input "third_light"
       - conditions:
           - "{{ command == 'recall' }}"
           - "{{ forth_light != none }}"
           - "{{ scene == 4 }}"
         sequence:
           - choose:
-              - conditions:
-                  - "{{ command == 'recall' }}"
-                  - "{{ scene == 1 }}"
+            - conditions:
+                - "{{ is_state(forth_light, 'on') }}"
+                - "{{ current_light != 'forth_light' }}"
+              sequence:
+                - service: input_text.set_value
+                  target:
+                    entity_id: !input "current_light"
+                  data:
+                    value: forth_light
+          - choose:
+              - conditions: "{{ current_light != none }}"
                 sequence:
-                  - choose:
-                    - conditions:
-                        - "{{ is_state(forth_light, 'on') }}"
-                        - "{{ current_light != 'forth_light' }}"
-                      sequence:
-                        - service: input_text.set_value
-                          target:
-                            entity_id: !input "current_light"
-                          data:
-                            value: forth_light
-                  - choose:
-                      - conditions: "{{ current_light != none }}"
-                        sequence:
-                          - service: homeassistant.toggle
-                            target: !input "forth_light"
+                  - service: homeassistant.toggle
+                    target: !input "forth_light"
       - conditions:
           - "{{ command == 'step_with_on_off' }}"
           - "{{ step_mode == 'StepMode.Up' }}"
