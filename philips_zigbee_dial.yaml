@@ -100,7 +100,7 @@ action:
                   data:
                     value: first_light
           - choose:
-            - conditions: "{{ current_light == 'first_light' }}"
+            - conditions: "{{ current_light == first_light }}"
               sequence:
                 - service: homeassistant.toggle
                   target: !input "first_light"
@@ -120,7 +120,7 @@ action:
                   data:
                     value: second_light
           - choose:
-            - conditions: "{{ current_light == 'second_light' }}"
+            - conditions: "{{ current_light == second_light }}"
               sequence:
                 - service: homeassistant.toggle
                   target: !input "second_light"
@@ -140,7 +140,7 @@ action:
                   data:
                     value: third_light
           - choose:
-            - conditions: "{{ current_light == 'third_light' }}"
+            - conditions: "{{ current_light == third_light }}"
               sequence:
                 - service: homeassistant.toggle
                   target: !input "third_light"
@@ -160,7 +160,7 @@ action:
                   data:
                     value: forth_light
           - choose:
-            - conditions: "{{ current_light == 'forth_light' }}"
+            - conditions: "{{ current_light == forth_light }}"
               sequence:
                 - service: homeassistant.toggle
                   target: !input "forth_light"
