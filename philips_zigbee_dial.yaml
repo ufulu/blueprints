@@ -89,21 +89,19 @@ action:
           - "{{ command == 'recall' }}"
           - "{{ scene == 1 }}"
         sequence:
-          - choose:
+          - if:
               - conditions:
                   - "{{ is_state(first_light, 'on') }}"
                   - "{{ current_light != 'first_light' }}"
-                sequence:
-                  - service: input_text.set_value
-                    target:
-                      entity_id: !input "current_light"
-                    data:
-                      value: first_light
-          - choose:
-              - conditions: "{{ current_light == first_light }}"
-                sequence:
-                  - service: homeassistant.toggle
-                    target: !input "first_light"
+            then:
+              - service: input_text.set_value
+                target:
+                  entity_id: !input "current_light"
+                data:
+                  value: first_light
+            else:
+              - service: homeassistant.toggle
+                target: !input "first_light"
       - conditions:
           - "{{ command == 'recall' }}"
           - "{{ second_light != none }}"
