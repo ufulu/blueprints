@@ -100,12 +100,10 @@ action:
                   data:
                     value: first_light
           - choose:
-            - conditions:
-                - "{{ current_light != none }}"
+              - conditions: "{{ current_light != none }}"
                 sequence:
                   - service: homeassistant.toggle
                     target: !input "first_light"
-              
       - conditions:
           - "{{ command == 'recall' }}"
           - "{{ second_light != none }}"
@@ -122,12 +120,10 @@ action:
                   data:
                     value: second_light
           - choose:
-            - conditions:
-                - "{{ current_light != none }}"
-              sequence:
-                - service: homeassistant.toggle
-                  target: !input "second_light"
-                
+              - conditions: "{{ current_light != none }}"
+                sequence:
+                  - service: homeassistant.toggle
+                    target: !input "second_light"
       - conditions:
           - "{{ command == 'recall' }}"
           - "{{ third_light != none }}"
@@ -144,12 +140,10 @@ action:
                   data:
                     value: third_light
           - choose:
-            - conditions:
-                - "{{ current_light != none }}"
-              sequence:
-                - service: homeassistant.toggle
-                  target: !input "third_light"
-                 
+              - conditions: "{{ current_light != none }}"
+                sequence:
+                  - service: homeassistant.toggle
+                    target: !input "third_light"
       - conditions:
           - "{{ command == 'recall' }}"
           - "{{ forth_light != none }}"
@@ -166,12 +160,10 @@ action:
                   data:
                     value: forth_light
           - choose:
-             - conditions:
-                - "{{ current_light != none }}"
-              sequence:
-                - service: homeassistant.toggle
-                  target: !input "forth_light"
-               
+              - conditions: "{{ current_light != none }}"
+                sequence:
+                  - service: homeassistant.toggle
+                    target: !input "forth_light"
       - conditions:
           - "{{ command == 'step_with_on_off' }}"
           - "{{ step_mode == 'StepMode.Up' }}"
