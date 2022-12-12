@@ -101,7 +101,7 @@ action:
                     value: first_light
           - choose:
             - conditions:
-              - "{{ current_light != none }}"
+                - "{{ current_light != none }}"
                 sequence:
                   - service: homeassistant.toggle
                     target: !input "first_light"
@@ -123,11 +123,11 @@ action:
                     value: second_light
           - choose:
             - conditions:
-              - "{{ current_light != none }}"
-                sequence:
-                  - service: homeassistant.toggle
-                    target: !input "second_light"
-                  
+                - "{{ current_light != none }}"
+              sequence:
+                - service: homeassistant.toggle
+                  target: !input "second_light"
+                
       - conditions:
           - "{{ command == 'recall' }}"
           - "{{ third_light != none }}"
@@ -145,10 +145,10 @@ action:
                     value: third_light
           - choose:
             - conditions:
-              - "{{ current_light != none }}"
-                sequence:
-                  - service: homeassistant.toggle
-                    target: !input "third_light"
+                - "{{ current_light != none }}"
+              sequence:
+                - service: homeassistant.toggle
+                  target: !input "third_light"
                  
       - conditions:
           - "{{ command == 'recall' }}"
@@ -166,10 +166,11 @@ action:
                   data:
                     value: forth_light
           - choose:
-              - "{{ current_light != 'forth_light' }}"
-                sequence:
-                  - service: homeassistant.toggle
-                    target: !input "forth_light"
+             - conditions:
+                - "{{ current_light != none }}"
+              sequence:
+                - service: homeassistant.toggle
+                  target: !input "forth_light"
                
       - conditions:
           - "{{ command == 'step_with_on_off' }}"
