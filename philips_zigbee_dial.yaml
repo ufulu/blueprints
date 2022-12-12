@@ -91,8 +91,8 @@ action:
         sequence:
           - choose:
               - conditions:
-                  - "{{ is_state(first_light, 'on') }}"
-                  - "{{ current_light != first_light }}"
+                  - "{{ is_state('first_light', 'on') }}"
+                  - "{{ current_light != 'first_light' }}"
                 sequence:
                   - service: input_text.set_value
                     target:
@@ -111,8 +111,8 @@ action:
         sequence:
           - choose:
               - conditions:
-                  - "{{ is_state(second_light, 'on') }}"
-                  - "{{ current_light != second_light }}"
+                  - "{{ is_state('second_light', 'on') }}"
+                  - "{{ current_light != 'second_light' }}"
                 sequence:
                   - service: input_text.set_value
                     target:
@@ -131,8 +131,8 @@ action:
         sequence:
           - choose:
               - conditions:
-                  - "{{ is_state(third_light, 'on') }}"
-                  - "{{ current_light != third_light }}"
+                  - "{{ is_state('third_light', 'on') }}"
+                  - "{{ current_light != 'third_light' }}"
                 sequence:
                   - service: input_text.set_value
                     target:
@@ -151,8 +151,8 @@ action:
         sequence:
           - choose:
               - conditions:
-                  - "{{ is_state(forth_light, 'on') }}"
-                  - "{{ current_light != forth_light }}"
+                  - "{{ is_state('forth_light', 'on') }}"
+                  - "{{ current_light != 'forth_light' }}"
                 sequence:
                   - service: input_text.set_value
                     target:
