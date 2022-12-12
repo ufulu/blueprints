@@ -1,8 +1,8 @@
 blueprint:
   name: Philips Tap Dial Switch dimmer
-  description: 'Control lights with a Philips Hue Tap Switch.
+  description: "Control lights with a Philips Hue Tap Switch.
     Use the four buttons to control up to four light(s) with an on/off toggle. The dial can be used to dim the most recently used light.
-    '
+    "
   domain: automation
   input:
     remote:
@@ -42,7 +42,7 @@ blueprint:
     current_light:
       name: (OPTIONAL) Current Light
       description:
-        'Text helper to track the current light to dim. Set for the dimmer controls to change which light they are controlling according to the last one turned on.'
+        "Text helper to track the current light to dim. Set for the dimmer controls to change which light they are controlling according to the last one turned on."
       default:
       selector:
         entity:
@@ -76,23 +76,24 @@ trigger:
     event_type: zha_event
     event_data:
       device_id: !input "remote"
+
 action:
   - variables:
-      command: "{{ trigger.event.data.command }}"
-      args: "{{ trigger.event.data.args }}"
-      params: "{{ trigger.event.data.params }}"
-      scene: "{{ trigger.event.data.params.scene_id }}"
-      step_mode: "{{ trigger.event.data.params.step_mode }}"
-      step_size: "{{ trigger.event.data.params.step_size }}"
+      command: '{{ trigger.event.data.command }}'
+      args: '{{ trigger.event.data.args }}'
+      params: '{{ trigger.event.data.params }}'
+      scene: '{{ trigger.event.data.params.scene_id }}'
+      step_mode: '{{ trigger.event.data.params.step_mode }}'
+      step_size: '{{ trigger.event.data.params.step_size }}'
   - choose:
       - conditions:
-          - "{{ command == 'recall' }}"
-          - "{{ scene == 1 }}"
+          - '{{ command == "recall" }}'
+          - '{{ scene == 1 }}'
         sequence:
           - choose:
               - conditions:
-                  - "{{ is_state(first_light, 'on') }}"
-                  - "{{ current_light != 'first_light' }}"
+                  - '{{ is_state(first_light, "on") }}'
+                  - '{{ current_light != "first_light" }}'
                 sequence:
                   - service: input_text.set_value
                     target:
@@ -100,19 +101,19 @@ action:
                     data:
                       value: first_light
           - choose:
-              - conditions: "{{ current_light != none }}"
+              - conditions: '{{ current_light != none }}'
                 sequence:
                   - service: homeassistant.toggle
                     target: !input "first_light"
       - conditions:
-          - "{{ command == 'recall' }}"
-          - "{{ second_light != none }}"
-          - "{{ scene == 0 }}"
+          - '{{ command == "recall" }}'
+          - '{{ second_light != none }}'
+          - '{{ scene == 0 }}'
         sequence:
           - choose:
               - conditions:
-                  - "{{ is_state(second_light, 'on') }}"
-                  - "{{ current_light != 'second_light' }}"
+                  - '{{ is_state(second_light, "on") }}'
+                  - '{{ current_light != "second_light" }}'
                 sequence:
                   - service: input_text.set_value
                     target:
@@ -120,19 +121,19 @@ action:
                     data:
                       value: second_light
           - choose:
-              - conditions: "{{ current_light != none }}"
+              - conditions: '{{ current_light != none }}'
                 sequence:
                   - service: homeassistant.toggle
                     target: !input "second_light"
       - conditions:
-          - "{{ command == 'recall' }}"
-          - "{{ third_light != none }}"
-          - "{{ scene == 5 }}"
+          - '{{ command == "recall" }}'
+          - '{{ third_light != none }}'
+          - '{{ scene == 5 }}'
         sequence:
           - choose:
               - conditions:
-                  - "{{ is_state(third_light, 'on') }}"
-                  - "{{ current_light != 'third_light' }}"
+                  - '{{ is_state(third_light, "on") }}'
+                  - '{{ current_light != "third_light" }}'
                 sequence:
                   - service: input_text.set_value
                     target:
@@ -140,19 +141,19 @@ action:
                     data:
                       value: third_light
           - choose:
-              - conditions: "{{ current_light != none }}"
+              - conditions: '{{ current_light != none }}'
                 sequence:
                   - service: homeassistant.toggle
                     target: !input "third_light"
       - conditions:
-          - "{{ command == 'recall' }}"
-          - "{{ forth_light != none }}"
-          - "{{ scene == 4 }}"
+          - '{{ command == "recall" }}'
+          - '{{ forth_light != none }}'
+          - '{{ scene == 4 }}'
         sequence:
           - choose:
               - conditions:
-                  - "{{ is_state(forth_light, 'on') }}"
-                  - "{{ current_light != 'forth_light' }}"
+                  - '{{ is_state(forth_light, "on") }}'
+                  - '{{ current_light != "forth_light" }}'
                 sequence:
                   - service: input_text.set_value
                     target:
@@ -160,43 +161,43 @@ action:
                     data:
                       value: forth_light
           - choose:
-              - conditions: "{{ current_light != none }}"
+              - conditions: '{{ current_light != none }}'
                 sequence:
                   - service: homeassistant.toggle
                     target: !input "forth_light"
       - conditions:
-          - "{{ command == 'step_with_on_off' }}"
-          - "{{ step_mode == 'StepMode.Up' }}"
+          - '{{ command == "step_with_on_off" }}'
+          - '{{ step_mode == "StepMode.Up" }}'
         sequence:
           - choose:
-              - conditions: "{{ current_light != none }}"
+              - conditions: '{{ current_light != none }}'
                 sequence:
                   - service: light.turn_on
-                    target: "{{ lights[states(current_light)] }}"
+                    target: '{{ lights[states(current_light)] }}'
                     data:
-                      brightness_step_pct: "{{ step_size * dim_scale }}"
+                      brightness_step_pct: '{{ step_size * dim_scale }}'
                       transition: 1
             default:
               - service: light.turn_on
                 target: !input "first_light"
                 data:
-                  brightness_step_pct: "{{ step_size * dim_scale }}"
+                  brightness_step_pct: '{{ step_size * dim_scale }}'
                   transition: 1
       - conditions:
-          - "{{ command == 'step_with_on_off' }}"
-          - "{{ step_mode == 'StepMode.Down' }}"
+          - '{{ command == "step_with_on_off" }}'
+          - '{{ step_mode == "StepMode.Down" }}'
         sequence:
           - choose:
-              - conditions: "{{ current_light != none }}"
+              - conditions: '{{ current_light != none }}'
                 sequence:
                   - service: light.turn_on
-                    target: "{{ lights[states(current_light)] }}"
+                    target: '{{ lights[states(current_light)] }}'
                     data:
-                      brightness_step_pct: "{{ -step_size * dim_scale }}"
+                      brightness_step_pct: '{{ -step_size * dim_scale }}'
                       transition: 1
             default:
               - service: light.turn_on
                 target: !input "first_light"
                 data:
-                  brightness_step_pct: "{{ -step_size * dim_scale }}"
+                  brightness_step_pct: '{{ -step_size * dim_scale }}'
                   transition: 1
