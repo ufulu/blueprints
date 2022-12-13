@@ -169,7 +169,7 @@ action:
           - "{{ step_mode == 'StepMode.Up' }}"
         sequence:
           - choose:
-              - conditions: "{{ current_light == 'forth_light' }}"
+              - conditions: "{{ current_light != none' }}"
                 sequence:
                   - service: light.turn_on
                     target: "{{ lights[states(current_light)] }}"
