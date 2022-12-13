@@ -91,8 +91,8 @@ action:
         sequence:
           - choose:
               - conditions:
-                  - '{{ is_state("first_light", "on") }}'
-                  - '{{ current_light != "first_light" }}'
+                  - '{{ is_state(first_light, "on") }}'
+                  - '{{ current_light != first_light }}'
                 sequence:
                   - service: input_text.set_value
                     target:
@@ -100,7 +100,7 @@ action:
                     data:
                       value: first_light
           - choose:
-              - conditions: '{{ current_light == "first_light" }}'
+              - conditions: '{{ current_light != none }}'
                 sequence:
                   - service: homeassistant.toggle
                     target: !input "first_light"
@@ -111,8 +111,8 @@ action:
         sequence:
           - choose:
               - conditions:
-                  - '{{ is_state("second_light", "on") }}'
-                  - '{{ current_light != "second_light" }}'
+                  - '{{ is_state(second_light "on") }}'
+                  - '{{ current_light != second_ligh" }}'
                 sequence:
                   - service: input_text.set_value
                     target:
@@ -120,7 +120,7 @@ action:
                     data:
                       value: second_light
           - choose:
-              - conditions: '{{ current_light == "second_light" }}'
+              - conditions: '{{ current_light != none }}'
                 sequence:
                   - service: homeassistant.toggle
                     target: !input "second_light"
@@ -131,8 +131,8 @@ action:
         sequence:
           - choose:
               - conditions:
-                  - '{{ is_state("third_light", "on") }}'
-                  - '{{ current_light != "third_light" }}'
+                  - '{{ is_state(third_light, "on") }}'
+                  - '{{ current_light != third_light }}'
                 sequence:
                   - service: input_text.set_value
                     target:
@@ -140,7 +140,7 @@ action:
                     data:
                       value: third_light
           - choose:
-              - conditions: '{{ current_light == "third_light" }}'
+              - conditions: '{{ current_light != none }}'
                 sequence:
                   - service: homeassistant.toggle
                     target: !input "third_light"
@@ -151,8 +151,8 @@ action:
         sequence:
           - choose:
               - conditions:
-                  - '{{ is_state("forth_light", "on") }}'
-                  - '{{ current_light != "forth_light" }}'
+                  - '{{ is_state(forth_light, "on") }}'
+                  - '{{ current_light != forth_light }}'
                 sequence:
                   - service: input_text.set_value
                     target:
@@ -160,7 +160,7 @@ action:
                     data:
                       value: forth_light
           - choose:
-              - conditions: '{{ current_light == "forth_light" }}'
+              - conditions: '{{ current_light != none }}'
                 sequence:
                   - service: homeassistant.toggle
                     target: !input "forth_light"
