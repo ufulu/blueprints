@@ -100,7 +100,7 @@ action:
                     data:
                       value: first_light        
           - choose:
-              - conditions: "{{ current_light != none }}"
+              - conditions: "{{ current_light == 'first_light' }}"
                 sequence:
                   - service: homeassistant.toggle
                     target: !input "first_light"
