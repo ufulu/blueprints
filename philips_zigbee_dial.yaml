@@ -120,7 +120,7 @@ action:
                     data:
                       value: second_light        
           - choose:
-              - conditions: "{{ current_light != none }}"
+              - conditions: "{{ current_light == 'second_light' }}"
                 sequence:
                   - service: homeassistant.toggle
                     target: !input "second_light"
@@ -140,7 +140,7 @@ action:
                     data:
                       value: third_light        
           - choose:
-              - conditions: "{{ current_light != none }}"
+              - conditions: "{{ current_light == 'third_light' }}"
                 sequence:
                   - service: homeassistant.toggle
                     target: !input "third_light"
@@ -169,7 +169,7 @@ action:
           - "{{ step_mode == 'StepMode.Up' }}"
         sequence:
           - choose:
-              - conditions: "{{ current_light != none }}"
+              - conditions: "{{ current_light == 'forth_light' }}"
                 sequence:
                   - service: light.turn_on
                     target: "{{ lights[states(current_light)] }}"
