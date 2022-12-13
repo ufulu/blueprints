@@ -99,8 +99,6 @@ action:
                       entity_id: !input "current_light"
                     data:
                       value: first_light        
-          - service: homeassistant.toggle
-            target: !input "first_light"
           - choose:
               - conditions: "{{ current_light != none }}"
                 sequence:
@@ -121,8 +119,6 @@ action:
                       entity_id: !input "current_light"
                     data:
                       value: second_light        
-          - service: homeassistant.toggle
-            target: !input "second_light"
           - choose:
               - conditions: "{{ current_light != none }}"
                 sequence:
@@ -143,8 +139,6 @@ action:
                       entity_id: !input "current_light"
                     data:
                       value: third_light        
-          - service: homeassistant.toggle
-            target: !input "third_light"
           - choose:
               - conditions: "{{ current_light != none }}"
                 sequence:
@@ -165,8 +159,6 @@ action:
                       entity_id: !input "current_light"
                     data:
                       value: forth_light        
-          - service: homeassistant.toggle
-            target: !input "forth_light"
           - choose:
               - conditions: "{{ current_light != none }}"
                 sequence:
