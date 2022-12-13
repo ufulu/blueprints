@@ -91,7 +91,7 @@ action:
         sequence:
           - choose:
               - conditions:
-                  - "{{ expand(first_light) | selectattr('state', '==', 'on') | list | count > 0 }}"
+                  - "{{ expand(first_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
                   - "{{ current_light != first_light }}"
                 sequence:
                   - service: input_text.set_value
@@ -111,7 +111,7 @@ action:
         sequence:
           - choose:
               - conditions:
-                  - "{{ expand(second_light) | selectattr('state', '==', 'on') | list | count > 0 }}"
+                  - "{{ expand(second_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
                   - "{{ current_light != second_light }}"
                 sequence:
                   - service: input_text.set_value
@@ -131,7 +131,7 @@ action:
         sequence:
           - choose:
               - conditions:
-                  - "{{ expand(third_light) | selectattr('state', '==', 'on') | list | count > 0 }}"
+                  - "{{ expand(third_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
                   - "{{ current_light != third_light }}"
                 sequence:
                   - service: input_text.set_value
@@ -151,7 +151,7 @@ action:
         sequence:
           - choose:
               - conditions:
-                  - "{{ expand(forth_light) | selectattr('state', '==', 'on') | list | count > 0 }}"
+                  - "{{ expand(forth_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
                   - "{{ current_light != forth_light }}"
                 sequence:
                   - service: input_text.set_value
