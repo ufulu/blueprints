@@ -99,14 +99,12 @@ action:
                       entity_id: !input "current_light"
                     data:
                       value: first_light
-          - choose:
               - conditions:
                   - "{{ expand(first_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
                   - "{{ current_light == first_light }}"
                 sequence:
                   - service: homeassistant.turn_off
                     target: !input "first_light"
-          - choose:
               - conditions:
                   - "{{ expand(first_light.entity_id) | selectattr('state', '==', 'off') | list | count > 0 }}"
                 sequence:
@@ -132,14 +130,12 @@ action:
                       entity_id: !input "current_light"
                     data:
                       value: second_light        
-          - choose:
               - conditions:
                   - "{{ expand(second_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
                   - "{{ current_light == second_light }}"
                 sequence:
                   - service: homeassistant.turn_off
                     target: !input "second_light"
-          - choose:
               - conditions:
                   - "{{ expand(second_light.entity_id) | selectattr('state', '==', 'off') | list | count > 0 }}"
                 sequence:
@@ -165,14 +161,12 @@ action:
                       entity_id: !input "current_light"
                     data:
                       value: third_light        
-          - choose:
               - conditions:
                   - "{{ expand(third_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
                   - "{{ current_light == third_light }}"
                 sequence:
                   - service: homeassistant.turn_off
                     target: !input "third_light"
-          - choose:
               - conditions:
                   - "{{ expand(third_light.entity_id) | selectattr('state', '==', 'off') | list | count > 0 }}"
                 sequence:
@@ -198,14 +192,12 @@ action:
                       entity_id: !input "current_light"
                     data:
                       value: forth_light        
-          - choose:
               - conditions:
                   - "{{ expand(forth_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
                   - "{{ current_light == forth_light }}"
                 sequence:
                   - service: homeassistant.turn_off
                     target: !input "forth_light"
-          - choose:
               - conditions:
                   - "{{ expand(forth_light.entity_id) | selectattr('state', '==', 'off') | list | count > 0 }}"
                 sequence:
