@@ -92,7 +92,7 @@ action:
           - choose:
               - conditions:
                   - "{{ expand(first_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
-                  - "{{ current_light != first_light }}"
+                  - "{{ current_light != 'first_light' }}"
                 sequence:
                   - service: input_text.set_value
                     target:
@@ -122,7 +122,7 @@ action:
           - choose:
               - conditions:
                   - "{{ expand(second_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
-                  - "{{ current_light != second_light }}"
+                  - "{{ current_light != 'second_light' }}"
                 sequence:
                   - service: input_text.set_value
                     target:
@@ -152,7 +152,7 @@ action:
           - choose:
               - conditions:
                   - "{{ expand(third_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
-                  - "{{ current_light != third_light }}"
+                  - "{{ current_light != 'third_light' }}"
                 sequence:
                   - service: input_text.set_value
                     target:
@@ -182,7 +182,7 @@ action:
           - choose:
               - conditions:
                   - "{{ expand(forth_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
-                  - "{{ current_light != forth_light }}"
+                  - "{{ current_light != 'forth_light' }}"
                 sequence:
                   - service: input_text.set_value
                     target:
