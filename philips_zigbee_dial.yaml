@@ -101,7 +101,6 @@ action:
                       value: first_light
               - conditions:
                   - "{{ expand(first_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
-                  - "{{ current_light == first_light }}"
                 sequence:
                   - service: homeassistant.turn_off
                     target: !input "first_light"
@@ -132,7 +131,6 @@ action:
                       value: second_light        
               - conditions:
                   - "{{ expand(second_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
-                  - "{{ current_light == second_light }}"
                 sequence:
                   - service: homeassistant.turn_off
                     target: !input "second_light"
@@ -163,7 +161,6 @@ action:
                       value: third_light        
               - conditions:
                   - "{{ expand(third_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
-                  - "{{ current_light == third_light }}"
                 sequence:
                   - service: homeassistant.turn_off
                     target: !input "third_light"
@@ -194,7 +191,6 @@ action:
                       value: forth_light        
               - conditions:
                   - "{{ expand(forth_light.entity_id) | selectattr('state', '==', 'on') | list | count > 0 }}"
-                  - "{{ current_light == forth_light }}"
                 sequence:
                   - service: homeassistant.turn_off
                     target: !input "forth_light"
